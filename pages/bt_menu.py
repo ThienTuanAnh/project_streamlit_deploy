@@ -10,9 +10,9 @@ st.markdown("""
 st.set_page_config(layout="wide")
 #Sidebar
 st.sidebar.header("Menu")
-st.sidebar.page_link("dashboard.py",label="Điều hướng")
+st.sidebar.page_link("app.py",label="Điều hướng")
 st.sidebar.page_link("pages/bao_cao.py",label="Báo cáo")
-st.sidebar.page_link("pages/cai_dat.py",label="Cài đặt")
+# st.sidebar.page_link("pages/cai_dat.py",label="Cài đặt")
 st.sidebar.page_link("pages/nguoi_dung.py",label="Người dùng")
 st.sidebar.page_link("pages/bt_menu.py",label="Bài tập menu")
 #wrap_content:
@@ -22,7 +22,6 @@ if "lst_mon_an" not in st.session_state:
     st.session_state.lst_mon_an = []
     
 st.title("Menu KFC Mini")
-
 dict_menu_gia = {
     "ga_ran": 35_000,
     "bo":45_000,
@@ -51,7 +50,6 @@ with col_chon_mon_an:
         dict_menu["kem"] = st.number_input("Kem vani",max_value=10,min_value=1,value=1,step=1)
         
         btn = frm_mon_an.form_submit_button(label="Đặt món")
-        
 with col_hoa_don:
     st.title("Hoá đơn của bạn")
     lst_mon_an = []
@@ -63,11 +61,11 @@ with col_hoa_don:
             "Thành tiền": dict_menu_gia[key] * dict_menu[key]
         }
         lst_mon_an.append(item);
-    
     st.table(lst_mon_an)
+    tong_tien = 0
+    for item in lst_mon_an:
+        tong_tien += item["Thành tiền"]
+    st.title(f"Tổng hoá đơn: {tong_tien}") 
 
-tong_tien = 0
-for item in lst_mon_an:
-    tong_tien += item["Thành tiền"] 
+    
 
-st.title(f"Tổng hoá đơn: {tong_tien}")  
