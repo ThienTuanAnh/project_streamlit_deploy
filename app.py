@@ -28,19 +28,21 @@ with col1:
 with col2:
     st.metric(label="Người dùng mới",value="327",delta="+ 12.5%")
 with col3:
-    st.metric(label="Đơn hàng",value="142",delta="-3 ")
+    st.metric(label="Đơn hàng",value="142",delta="- 5%")
 with col4:
-    st.metric(label="Tỉ lệ chuyển đổi",value="3.8%",delta="+ 0.4%")
+    st.metric(label="Tỉ lệ chuyển đổi",value="3.8%",delta="0.4%")
+    
+st.markdown("<hr />",unsafe_allow_html=True)
 
-st.markdown("<hr />",unsafe_allow_html=True) #đường kẻ ngang
-
-col_doanh_thu,col_don_hang = st.columns(2)
+col_doanh_thu, col_don_hang = st.columns(2)
 
 with col_doanh_thu:
-    lst_doanh_thu = (6,14,5,15,10)
+    lst_doanh_thu = [6,14,5,15,10]
     st.title("Doanh thu 7 ngày gần nhất")
     st.line_chart(lst_doanh_thu)
+
 with col_don_hang:
-    lst_don_hang = [5,35,53,16]
+    lst_don_hang = [15,35,53,16]
     st.title("Số lượng đơn theo trạng thái")
     st.bar_chart(lst_don_hang)
+    
